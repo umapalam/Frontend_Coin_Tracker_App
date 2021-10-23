@@ -1,7 +1,7 @@
 import './normalize.css';
 import './skeleton.css';
 import React, { Component } from 'react'
-import Coin from './Coin'
+import Coins from './Coins';
 
 class App extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class App extends Component {
     <div className="App">
       <h1>Test Styling</h1>
       <input type="button" value="button input"></input>
-      <Coin />
+      <Coins />
     </div>
   )
 }
