@@ -91,12 +91,6 @@ render () {
           value='Get Info'
           
         />
-           <input
-          type='submit'
-          value='Add Fav '
-          onDoubleClick={this.toggleFav}
-          
-        />
 
         </form>
       
