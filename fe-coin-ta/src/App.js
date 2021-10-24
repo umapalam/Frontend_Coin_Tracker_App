@@ -37,6 +37,27 @@ class App extends Component {
     })
   }
 
+  toggleFavorite = (crypto) => {
+    // console.log(holiday)
+    fetch(baseUrl + '/cryptos/' + crypto._id, {
+      method: 'PUT',
+      body: JSON.stringify({favorite: !crypto.favorite}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }).then(res => res.json())
+    .then(resJson => {
+      // console.log(resJson)
+      const copyCryptos = [...this.state.cryptos]
+      const findIndex = this.state.cryptos.findIndex(
+        crypto => crypto._id === resJson._id)
+      copyCryptos[findIndex].favorite = resJson.favorite
+      this.setState({
+        cryptos: copyCryptos
+      })
+    })
+  }
+
   componentDidMount() {
         this.getCryptos()
        }
@@ -54,9 +75,11 @@ class App extends Component {
             <tbody>
               { this.state.cryptos.map((crypto, i) => {
                   return (
-                    <tr>
-                      <td key={crypto._id}> {crypto.coinName} </td>
-                      {/* <td key={i}> {crypto.coinPrice} </td> */}
+                    <tr key={crypto._id}>
+                    <td onClick={() => this.toggleFavorite(crypto)}
+                     className={ crypto.favorite ? 'favorite' : null }>
+                     { crypto.coinName }
+                    </td>
                     </tr>
                   )
                 })

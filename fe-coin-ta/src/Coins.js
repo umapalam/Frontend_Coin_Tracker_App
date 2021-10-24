@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Coin from './Coin'
-import FavCoins from './FavCoins'
+
 
 //backend url port
 let baseUrlBackEnd = 'http://localhost:4000'
