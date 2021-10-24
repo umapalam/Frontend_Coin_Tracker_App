@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 
-//backend url port
-let baseUrlBackEnd = 'http://localhost:4000'
-
 export default class FavCoins extends Component {
     constructor(props)  {
         super(props)
