@@ -14,10 +14,12 @@ class App extends Component {
   }
   render () {
   return (
-    <div className="App">
-      <h1>My Coin Tracker</h1>
-      <input type="button" value="button input"></input>
-      <Coins />
+    <div className="container">
+      <div className="inner-container">
+        <h1>My Coin Tracker</h1>
+  
+        <Coins />
+      </div>
     </div>
   )
 }
