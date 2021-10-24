@@ -58,6 +58,22 @@ class App extends Component {
     })
   }
 
+  deleteCrypto = (id) => {
+    // console.log(id)
+    fetch(baseUrl + '/cryptos/' + id, {
+    method: 'DELETE'
+  }).then( res => {
+    // console.log(res)
+    // if I checked for a 200 response code 
+    const findIndex = this.state.cryptos.findIndex(crypto => crypto._id === id)
+    const copyCryptos = [...this.state.cryptos]
+    copyCryptos.splice(findIndex, 1)
+    this.setState({
+      cryptos: copyCryptos
+    })
+  })
+}
+
   componentDidMount() {
         this.getCryptos()
        }
@@ -80,6 +96,8 @@ class App extends Component {
                      className={ crypto.favorite ? 'favorite' : null }>
                      { crypto.coinName }
                     </td>
+                    <td onClick={() => this.deleteCrypto(crypto._id)}>X</td>
+
                     </tr>
                   )
                 })
