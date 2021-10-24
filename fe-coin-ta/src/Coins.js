@@ -36,14 +36,15 @@ handleChange = (event) => {
         searchUrl: this.state.baseUrl + this.state.coinName + this.state.default
       }, () => {
         fetch(this.state.searchUrl, {
-            body: JSON.stringify(coinObject) //Fetch needs to stringify the API object
+            // body: JSON.stringify(coinObject:json) //Fetch needs to stringify the API object
         })
         .then(response => {
          return response.json()
-        }).then(json => 
+        }).then(json => {
+            console.log(json)
             this.setState({
-            coinObject: json,
-        }),
+            coinObject: json[this.state.coinName],
+        })},
         
         (err) => console.log(err))
       })
@@ -52,6 +53,7 @@ handleChange = (event) => {
         
 
 componentDidMount() {
+   
    // this.getCoin()
   }
 
@@ -59,8 +61,9 @@ render () {
     console.log(this.state.coinObject)
     return(
         <>
+        <h2>Track.</h2>
     <form onSubmit={this.handleSubmit}>
-        <label htmlFor='coinName'> Name </label>
+        <label htmlFor='coinName'> Find a Coin </label>
         <input
           id='coinName'
           type='text'
@@ -69,10 +72,10 @@ render () {
         />
         <input
           type='submit'
-          value='Find Coin Info'
+          value='Get Info'
         />
         </form>
-        {/* <Coin coinObject={this.state.coinObject} coinName={this.state.coinName}/> */}
+        {Object.keys(this.state.coinObject).length>0 &&<Coin coinObject={this.state.coinObject} coinName={this.state.coinName}/>}
         </>
 
 
