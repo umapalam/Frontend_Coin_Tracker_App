@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import Coin from './Coin'
+import FavCoins from './FavCoins'
+
+//backend url port
+let baseUrlBackEnd = 'http://localhost:4000'
 
 export default class Coins extends Component {
     constructor(props) {
@@ -10,8 +14,10 @@ export default class Coins extends Component {
             coinName: "",
             default: "&vs_currencies=usd&include_market_cap=true&include_24hr_vol=true&include_24hr_change=true&include_last_updated_at=false",
             searchUrl: "",
+            favCoin: false,
         }
     }
+
 handleChange = (event) => {
         this.setState({
 
@@ -49,19 +55,29 @@ handleChange = (event) => {
         (err) => console.log(err))
       })
    }
-    
-        
 
-componentDidMount() {
-   
-   // this.getCoin()
+   addCrypto = (coinObject) => {
+    const copyCoinObject = [...this.state.coinObject]
+    copyCoinObject.push(coinObject)
+    this.setState({
+      coinObject: copyCoinObject,
+    })
+  } 
+  toggleCoin =() => {
+    this.setState ({
+      favCoin: true
+    })
   }
+
+// componentDidMount() {
+//    this.favCoin()
+//   }
 
 render () {
     console.log(this.state.coinObject)
     return(
         <>
-        <h2>Track.</h2>
+        <h2>Earn Track Learn</h2>
     <form onSubmit={this.handleSubmit}>
         <label htmlFor='coinName'> Find a Coin </label>
         <input
@@ -73,9 +89,33 @@ render () {
         <input
           type='submit'
           value='Get Info'
+          
         />
+           <input
+          type='submit'
+          value='Add Fav '
+          onDoubleClick={this.toggleFav}
+          
+        />
+
         </form>
-        {Object.keys(this.state.coinObject).length>0 &&<Coin coinObject={this.state.coinObject} coinName={this.state.coinName}/>}
+        {/* adding table */}
+        <div>
+        <tr>
+          <td>
+            {this.state.coinName}
+          </td>
+      
+        </tr>
+        </div>
+      
+      
+        {Object.keys(this.state.coinObject).length>0 &&
+        <Coin coinObject={this.state.coinObject} coinName={this.state.coinName}/>
+        }
+
+       
+        
         </>
 
 

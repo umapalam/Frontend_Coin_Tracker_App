@@ -6,7 +6,9 @@ export default class Coin extends Component {
 render () {
     return(
         <>
+        
         <h2>{this.props.coinName}</h2>
+        
         <div className="coindatadiv">
         <h4>Price: {this.props.coinObject.usd}</h4>
         <p>Market Cap: {this.props.coinObject.usd_market_cap}</p>
