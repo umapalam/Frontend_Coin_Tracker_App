@@ -99,16 +99,6 @@ render () {
         />
 
         </form>
-        {/* adding table */}
-        <div>
-        <tr>
-          <td>
-            {this.state.coinName}
-          </td>
-      
-        </tr>
-        </div>
-      
       
         {Object.keys(this.state.coinObject).length>0 &&
         <Coin coinObject={this.state.coinObject} coinName={this.state.coinName}/>

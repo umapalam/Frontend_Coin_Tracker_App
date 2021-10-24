@@ -12,6 +12,8 @@ class App extends Component {
     super(props)
     this.state ={
       cryptos:[],
+      modalOpen: false,
+      cryptoToBeEdited: {},
     }
   }
   getCryptos = () => {
@@ -74,6 +76,53 @@ class App extends Component {
   })
 }
 
+handleSubmit = async (e) => {
+  e.preventDefault()
+  const url = baseUrl + '/cryptos/' + this.state.cryptoToBeEdited._id
+  try{
+    const response = await fetch( url , {
+      method: 'PUT',
+      body: JSON.stringify({
+        coinName: e.target.coinName.value,
+      }),
+      headers: {
+        'Content-Type' : 'application/json'
+      },
+    })
+
+    if (response.status === 200){
+      const updatedCrypto = await response.json()
+      //console.log(updatedHoliday)
+      const findIndex = this.state.cryptos.findIndex(crypto => crypto._id === updatedCrypto._id)
+      const copyCryptos = [...this.state.cryptos]
+      copyCryptos[findIndex] = updatedCrypto
+      this.setState({
+        cryptos: copyCryptos,
+        modalOpen:false
+      })
+    }
+  }
+  catch(err){
+    console.log('Error => ', err);
+  }
+}
+
+  handleChange = (e)=>{
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  showEditForm = (crypto)=>{
+   this.setState({
+     modalOpen:true,
+     coinName: crypto.coinName,
+     favorite: "",
+     cryptoToBeEdited: crypto,
+
+   })
+ }
+
   componentDidMount() {
         this.getCryptos()
        }
@@ -86,7 +135,7 @@ class App extends Component {
         <Coins />
       </div>
       <div>
-      <NewForm baseUrl={baseUrl} addCrypto={ this.addCrypto }/>
+        <NewForm baseUrl={baseUrl} addCrypto={ this.addCrypto }/>
         <table>
             <tbody>
               { this.state.cryptos.map((crypto, i) => {
@@ -96,14 +145,24 @@ class App extends Component {
                      className={ crypto.favorite ? 'favorite' : null }>
                      { crypto.coinName }
                     </td>
+                    <td onClick={() => { this.showEditForm(crypto)}}>✏️</td>
                     <td onClick={() => this.deleteCrypto(crypto._id)}>X</td>
-
                     </tr>
                   )
                 })
               }
             </tbody>
+
           </table>
+          <br/>
+          {
+            this.state.modalOpen &&
+                   <form onSubmit={this.handleSubmit}>
+                   <label>Name: </label>
+                   <input name="coinName" value={this.state.crypto} onChange={this.handleChange}/> <br/>
+                  <button>submit</button>
+                 </form>
+          }
         </div>
     </div>
   )

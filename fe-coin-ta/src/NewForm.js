@@ -15,12 +15,12 @@ export default class NewForm extends Component {
         })
       }
 
-      handleSubmit = (event) => {
+    handleSubmit = (event) => {
         event.preventDefault()
         // fetch
         fetch(this.props.baseUrl + '/cryptos', {
           method: 'POST',
-          body: JSON.stringify({name: this.state.coinName}),
+          body: JSON.stringify({coinName: this.state.coinName}),
           headers: {
             'Content-Type': 'application/json'
           },
@@ -28,7 +28,7 @@ export default class NewForm extends Component {
             return res.json()
         }).then( data => {
           // console.log(data)
-          this.props.addCryptos(data)
+          this.props.addCrypto(data)
           this.setState({
             coinName: ''
           })
@@ -40,8 +40,10 @@ export default class NewForm extends Component {
         <form onSubmit={this.handleSubmit}>
         <label htmlFor="coinName">Name: </label>
         <input type="text" id="coinName" name="coinName" onChange={ (e) => this.handleChange(e)} value={this.state.coinName} />
-        <input type="submit" value="Add a favorite Coin" />
+        <input type="submit" value="Track Coin" />
       </form>
+
+
 
     )
 }
