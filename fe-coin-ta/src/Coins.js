@@ -77,7 +77,9 @@ render () {
     console.log(this.state.coinObject)
     return(
         <>
-        <h2>Earn Track Learn</h2>
+        <div className="App">
+        <h2 className="inner-container">Earn. Track. Learn.</h2>
+        <div>
     <form onSubmit={this.handleSubmit}>
         <label htmlFor='coinName'> Find a Coin </label>
         <input
@@ -86,18 +88,20 @@ render () {
           value={this.state.coinName}
           onChange={this.handleChange}
         />
-        <input
+        <input className="button-primary"
           type='submit'
           value='Get Info'
           
         />
 
         </form>
-      
+        </div>
+        <div className="divstyle1">
         {Object.keys(this.state.coinObject).length>0 &&
         <Coin coinObject={this.state.coinObject} coinName={this.state.coinName}/>
         }
-
+        </div>
+        </div>
        
         
         </>
