@@ -129,18 +129,18 @@ handleSubmit = async (e) => {
 
   render () {
   return (
-    <div className="container">
-      <div className="inner-container">
+    <div>
+      <div className="App">
         <h1>My Coin Tracker</h1>
         <Coins />
       </div>
-      <div>
+      <div className="u-pull-right">
         <NewForm baseUrl={baseUrl} addCrypto={ this.addCrypto }/>
         <table>
             <tbody>
               { this.state.cryptos.map((crypto, i) => {
                   return (
-                    <tr key={crypto._id}>
+                    <tr className="divstyle2"key={crypto._id}>
                     <td onClick={() => this.toggleFavorite(crypto)}
                      className={ crypto.favorite ? 'favorite' : null }>
                      { crypto.coinName }
@@ -160,7 +160,7 @@ handleSubmit = async (e) => {
                    <form onSubmit={this.handleSubmit}>
                    <label>Name: </label>
                    <input name="coinName" value={this.state.crypto} onChange={this.handleChange}/> <br/>
-                  <button>submit</button>
+                  <button className="button-primary">submit</button>
                  </form>
           }
         </div>
