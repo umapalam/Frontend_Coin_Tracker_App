@@ -453,6 +453,7 @@ color: #697431;
   display:flex;
   flex-direction: column;
   align-items: left;
+  position: absolute;
 }
 
 .divstyle2 {
@@ -469,6 +470,28 @@ color: #697431;
   flex-direction: row;
   align-items:left;
 
+
 }
 
+.CoinTrack {
+  margin: 20px;
+  position: absolute;
+  top: 100px;
+  right: 20px;
+}
 
+.Table {
+  margin: 20px;
+  position: absolute;
+  top: 250px;
+  right: 200px;
+}
+
+.Title {
+  color: #697431;
+
+}
+
+.span {
+  color:#697431;
+}
