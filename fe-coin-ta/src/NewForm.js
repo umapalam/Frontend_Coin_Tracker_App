@@ -37,8 +37,8 @@ export default class NewForm extends Component {
     
     render () {
     return (
-        <div>
-          <h4>Track My Coins.</h4>
+        <div className="CoinTrack">
+          <h4>Followed Coins.</h4>
         <form onSubmit={this.handleSubmit}>
         <label htmlFor="coinName" placeholder="Add a Coin Here"> </label>
         <input type="text" id="coinName" name="coinName" onChange={ (e) => this.handleChange(e)} value={this.state.coinName} />

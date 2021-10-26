@@ -131,12 +131,12 @@ handleSubmit = async (e) => {
   return (
     <div>
       <div className="App">
-        <h1>My Coin Tracker</h1>
+        <h1 className="Title">My Coin Tracker</h1>
         <Coins />
       </div>
       <div className="u-pull-right">
         <NewForm baseUrl={baseUrl} addCrypto={ this.addCrypto }/>
-        <table>
+        <table className="Table">
             <tbody>
               { this.state.cryptos.map((crypto, i) => {
                   return (
