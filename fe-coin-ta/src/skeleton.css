@@ -334,10 +334,10 @@ td {
   border-bottom: 1px solid #E1E1E1; }
 th:first-child,
 td:first-child {
-  padding-left: 0; }
+  padding-left: 5; }
 th:last-child,
 td:last-child {
-  padding-right: 0; }
+  padding-right: 5; }
 
 
 /* Spacing
@@ -459,12 +459,12 @@ color: #697431;
 .divstyle2 {
   background-color: ivory;
   opacity: 70%;
-  width: 40%;
+  width: 100%;
   box-shadow: 10px 5px 5px black;
   margin:auto;
   padding-left: 0.2em;
   padding-right: 0.2em;
-  border-radius: 0.5em;
+  border-radius: 0.3em;
   font-weight: bold;
   display:flex;
   flex-direction: row;
@@ -476,22 +476,57 @@ color: #697431;
 .CoinTrack {
   margin: 20px;
   position: absolute;
-  top: 100px;
+  top: 150px;
   right: 20px;
 }
 
 .Table {
   margin: 20px;
   position: absolute;
-  top: 250px;
+  top: 270px;
   right: 200px;
+  display: flex;
+  flex-direction: row;
 }
 
 .Title {
   color: #697431;
+  top: 200px;
+  left: 600px;
+  position:absolute;
 
 }
 
 .span {
   color:#697431;
+}
+
+.editfrm {
+ bottom: 100px;
+ right: 450px;
+ position:absolute;
+ 
+}
+
+.subtext {
+  top: 260px;
+  left: 700px;
+  position:absolute;
+}
+
+.ticker {
+  right: 200px;
+  left: 200px;
+}
+
+.pencil {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.delete {
+  align-items: right;
+  display: flex;
+  flex-direction: row;
 }

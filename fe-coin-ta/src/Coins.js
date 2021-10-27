@@ -78,8 +78,9 @@ render () {
     return(
         <>
         <div className="App">
-        <h2 className="inner-container">Earn. Track. Learn.</h2>
+        <h3 className="subtext">Earn. Track. Learn.</h3>
         <div>
+          <h4 className="App">Study Coins.</h4>
     <form onSubmit={this.handleSubmit}>
         <label htmlFor='coinName'> Find a Coin </label>
         <input
