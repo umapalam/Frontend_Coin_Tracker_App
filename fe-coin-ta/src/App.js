@@ -3,6 +3,7 @@ import './skeleton.css';
 import React, { Component } from 'react'
 import Coins from './Coins';
 import NewForm from './NewForm';
+import Nav from './Nav';
 
 //backend url port
 let baseUrl = 'http://localhost:4000'
@@ -18,7 +19,9 @@ class App extends Component {
   }
   getCryptos = () => {
         // fetch to the backend
-        fetch(baseUrl + "/cryptos")
+        fetch(baseUrl + "/cryptos", {
+          credentials: "include"
+        })
         .then(res => {
           if(res.status === 200) {
             return res.json()
@@ -38,6 +41,61 @@ class App extends Component {
       cryptos: copyCryptos,
     })
   }
+  
+  loginUser = async (e) => {
+    console.log('loginUser')
+    e.preventDefault()
+    const url = baseUrl + '/users/login'
+    const loginBody = {
+      username: e.target.username.value,
+      password: e.target.password.value
+    }
+    try {
+
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify(loginBody),
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: "include"
+      })
+
+      console.log(response)
+      console.log("BODY: ",response.body)
+
+      if (response.status === 200) {
+        this.cryptos()
+      }
+    }
+    catch (err) {
+      console.log('Error => ', err);
+    }
+  }
+
+  signup = async (e) => {
+    e.preventDefault()
+    const url = baseUrl + '/users/signup'
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          username: e.target.username.value,
+          password: e.target.password.value
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      if (response.status === 200) {
+        this.getCryptos()
+      }
+    }
+    catch (err) {
+      console.log('Error => ', err);
+    }
+  }
+
 
   toggleFavorite = (crypto) => {
     // console.log(holiday)
@@ -46,8 +104,9 @@ class App extends Component {
       body: JSON.stringify({favorite: !crypto.favorite}),
       headers: {
         'Content-Type': 'application/json'
-      }
-    }).then(res => res.json())
+    },
+    credentials: "include"
+  }).then(res => res.json())
     .then(resJson => {
       // console.log(resJson)
       const copyCryptos = [...this.state.cryptos]
@@ -63,7 +122,8 @@ class App extends Component {
   deleteCrypto = (id) => {
     // console.log(id)
     fetch(baseUrl + '/cryptos/' + id, {
-    method: 'DELETE'
+    method: 'DELETE',
+    credentials: "include"
   }).then( res => {
     // console.log(res)
     // if I checked for a 200 response code 
@@ -88,6 +148,7 @@ handleSubmit = async (e) => {
       headers: {
         'Content-Type' : 'application/json'
       },
+      credentials: "include"
     })
 
     if (response.status === 200){
@@ -131,6 +192,7 @@ handleSubmit = async (e) => {
   return (
     <div>
       <div className="App">
+      <Nav loginUser={this.loginUser} signup={this.signup}/>
         <h1 className="Title">My Coin Tracker</h1>
         <Coins />
       </div>
