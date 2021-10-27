@@ -3,7 +3,7 @@ import Coin from './Coin'
 
 
 //backend url port
-let baseUrlBackEnd = 'http://localhost:4000'
+// let baseUrlBackEnd = 'http://localhost:4000'
 
 export default class Coins extends Component {
     constructor(props) {
