@@ -207,8 +207,8 @@ handleSubmit = async (e) => {
                      className={ crypto.favorite ? 'favorite' : null }>
                      { crypto.coinName }
                     </td>
-                    <td onClick={() => { this.showEditForm(crypto)}}>✏️</td>
-                    <td onClick={() => this.deleteCrypto(crypto._id)}>X</td>
+                    <td className="pencil" onClick={() => { this.showEditForm(crypto)}}>✏️</td>
+                    <td className="delete" onClick={() => this.deleteCrypto(crypto._id)}>X</td>
                     </tr>
                   )
                 })
@@ -219,9 +219,11 @@ handleSubmit = async (e) => {
           <br/>
           {
             this.state.modalOpen &&
-                   <form onSubmit={this.handleSubmit}>
+                   <form className="editfrm"onSubmit={this.handleSubmit}>
                    <label>Name: </label>
-                   <input name="coinName" value={this.state.crypto} onChange={this.handleChange}/> <br/>
+                   <input name="coinName" value={this.state.crypto} onChange={this.handleChange} placeholder={this.state.coinName}/> <br/>
+                   <label>Price: </label>
+                   <input name="coinPrice" value={this.state.crypto} onChange={this.handleChange} placeholder={this.state.coinPrice}/> <br/>
                   <button className="button-primary">submit</button>
                  </form>
           }

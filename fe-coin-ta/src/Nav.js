@@ -7,7 +7,7 @@ export default function Nav(props) {
                 <input type="text" id="name" name="username"/>
                 <label htmlFor="name">Password: </label>
                 <input type="text" id="password" name="password"/>
-                <input type="submit" value="login" />
+                <input class="button-primary" type="submit" value="login" />
             </form>
             OR
             <form onSubmit={props.signup}>
@@ -16,7 +16,7 @@ export default function Nav(props) {
                 <input type="text" id="name" name="username"/>
                 <label htmlFor="name">Password: </label>
                 <input type="text" id="password" name="password"/>
-                <input type="submit" value="signup" />
+                <input class="button-primary"type="submit" value="signup" />
             </form>
         </nav>
     )
