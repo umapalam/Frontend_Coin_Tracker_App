@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 import Coins from './Coins';
 import NewForm from './NewForm';
 import Nav from './Nav';
+// import ReactDOM from 'react-dom';
+// import Modal from 'react-modal'
+import ExampleApp from './ExampleApp';
 
 //backend url port
 let baseUrl = 'http://localhost:4000'
@@ -191,8 +194,11 @@ handleSubmit = async (e) => {
   render () {
   return (
     <div>
+      <div className="modal">
+        <ExampleApp />
+      </div>
       <div className="App">
-      <Nav loginUser={this.loginUser} signup={this.signup}/>
+      {/* <Nav loginUser={this.loginUser} signup={this.signup}/> */}
         <h1 className="Title">My Coin Tracker</h1>
         <Coins />
       </div>
