@@ -196,7 +196,6 @@ handleSubmit = async (e) => {
       , 
       {
       method: 'DELETE',
-
       headers: {
         'Content-Type': 'application/json'
       },
