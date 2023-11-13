@@ -1,6 +1,6 @@
 # Coin_Tracker_App_Frontend
 
-Coin Tracker Application allows user to discover and find information about thier favourite crypto currency. Upon signup and login, users can search for the latest price/usd, markep cap, 24 hour trading volume on a click of a button. User can also track thier favourite cryptcurrency.
+Coin Tracker Application allows user to discover and find information about thier favourite crypto currency. Upon signup and login, users can search for the latest price/usd, markep cap, 24 hour trading volume on a click of a button. User can also track their favourite cryptcurrency.
 
 Front End Technologies used:
 React, CSS, Skeleton Framework, Heroku
